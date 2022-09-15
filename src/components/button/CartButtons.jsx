@@ -16,7 +16,7 @@ const CartButtons = () => {
         Cart
         <span className="cart-container">
           <FaShoppingBag />
-          <span className="cart-value">12</span>
+          <span className={1 ? null : "cart-value"}></span>
         </span>
       </Link>
       <button type="button" className="auth-btn">
