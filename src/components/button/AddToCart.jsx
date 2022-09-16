@@ -5,7 +5,9 @@ import styled from "styled-components";
 import { useCartContext } from "../../context/cart_context";
 import AmountButtons from "./AmountButtons";
 
-const AddToCart = ({ id, stock, edition }) => {
+const AddToCart = ({ product }) => {
+  const { id, stock, edition } = product;
+  const { addToCart } = useCartContext();
   const [selectEdition, setSelectEdition] = useState(edition[0]);
   const [amount, setAmount] = useState(1);
 
@@ -57,7 +59,10 @@ const AddToCart = ({ id, stock, edition }) => {
           increaseAmount={increaseAmount}
           decreaseAmount={decreaseAmount}
         />
-        <Link to="/cart" className="btn">
+        <Link
+          to="/cart"
+          className="btn"
+          onClick={() => addToCart(id, selectEdition, amount, product)}>
           add to cart
         </Link>
       </div>

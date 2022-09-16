@@ -145,6 +145,7 @@ const ContactPage = () => {
     </main>
   );
 };
+export default ContactPage;
 
 const Wrapper = styled.section`
   display: grid;
@@ -249,4 +250,3 @@ const Wrapper = styled.section`
     animation: spinner 0.6s linear infinite;
   }
 `;
-export default ContactPage;

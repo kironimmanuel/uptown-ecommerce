@@ -1,4 +1,3 @@
-import React from "react";
 import { FeaturedProducts, Hero, Newsletter, Services } from "../components";
 const HomePage = () => {
   return (
@@ -10,5 +9,4 @@ const HomePage = () => {
     </main>
   );
 };
-
 export default HomePage;

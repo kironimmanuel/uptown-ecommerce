@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Filters, PageHero, ProductList, Sort } from "../components";
 
@@ -18,6 +17,7 @@ const ProductsPage = () => {
     </main>
   );
 };
+export default ProductsPage;
 
 const Wrapper = styled.div`
   .products {
@@ -31,5 +31,3 @@ const Wrapper = styled.div`
     }
   }
 `;
-
-export default ProductsPage;

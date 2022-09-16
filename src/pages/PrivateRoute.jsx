@@ -1,9 +1,16 @@
-import { useAuth0 } from '@auth0/auth0-react'
-import React from 'react'
-import { Redirect, Route } from 'react-router-dom'
-import { useUserContext } from '../context/user_context'
+import { useAuth0 } from "@auth0/auth0-react";
+import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const PrivateRoute = () => {
-  return <h4>Private Route</h4>
-}
-export default PrivateRoute
+const PrivateRoute = ({ children }) => {
+  const { user } = useAuth0();
+
+  if (!user) {
+    toast.error("Unauthorized to access this route!", {
+      toastId: "custom-id-yes",
+    });
+    return <Navigate to="/" />;
+  }
+  return children;
+};
+export default PrivateRoute;

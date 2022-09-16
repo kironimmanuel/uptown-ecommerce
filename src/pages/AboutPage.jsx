@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import aboutImg from "../assets/images/about.jpg";
 import { PageHero } from "../components";
@@ -33,6 +32,7 @@ const AboutPage = () => {
     </main>
   );
 };
+export default AboutPage;
 
 const Wrapper = styled.section`
   display: grid;
@@ -61,4 +61,3 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr 1fr;
   }
 `;
-export default AboutPage;

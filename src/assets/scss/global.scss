@@ -25,6 +25,7 @@
   --clr-red-light: hsl(360, 71%, 66%);
   --clr-green-dark: hsl(125, 67%, 44%);
   --clr-green-light: hsl(125, 71%, 66%);
+  --clr-bcg-main: #f8fdfb;
   --clr-white: #fff;
   --clr-black: #222;
   --transition: all 0.3s linear;
@@ -49,7 +50,7 @@
 
 body {
   font-family: var(--ff-secondary);
-  background: var(--clr-white);
+  background: var(--clr-bcg-main);
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { useFilterContext } from "../../context/filter_context";
 import { formatPrice } from "../../utils/formatPrice";
@@ -189,8 +188,9 @@ const Wrapper = styled.section`
     grid-template-columns: auto 1fr;
     align-items: center;
     text-transform: capitalize;
-    column-gap: 0.5rem;
+    column-gap: 1.5rem;
     font-size: 1rem;
+    justify-items: start;
   }
   .radio-btn {
     accent-color: var(--clr-grey-5);

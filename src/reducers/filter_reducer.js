@@ -7,11 +7,11 @@ import {
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   UPDATE_SORT,
-} from "../actions/actions";
+} from "./actions/actions";
 
 const filter_reducer = (state, action) => {
   switch (action.type) {
-    case LOAD_PRODUCTS:
+    case LOAD_PRODUCTS: {
       let maxPrice = action.payload.map((product) => product.price);
       // We cant pass in the array directly, use spread operator
       maxPrice = Math.max(...maxPrice);
@@ -26,6 +26,7 @@ const filter_reducer = (state, action) => {
           price: maxPrice,
         },
       };
+    }
     case SET_GRIDVIEW:
       return {
         ...state,
@@ -85,41 +86,40 @@ const filter_reducer = (state, action) => {
         ...state,
         filters: { ...state.filters, [name]: value },
       };
-    case FILTER_PRODUCTS:
+    case FILTER_PRODUCTS: {
       const { all_products } = state;
       const { text, category, edition, price, shipping } = state.filters;
       // Before filtering, we copy the all_products array
-      let filteredProducts = [...all_products];
+      let tempProducts = [...all_products];
       if (text) {
-        filteredProducts = filteredProducts.filter((product) =>
+        tempProducts = tempProducts.filter((product) =>
           product.name.toLowerCase().startsWith(text.toLowerCase())
         );
       }
       if (category !== "all") {
-        filteredProducts = filteredProducts.filter(
+        tempProducts = tempProducts.filter(
           (product) => product.category === category
         );
       }
       // Edition is an array
       if (edition !== "all") {
-        filteredProducts = filteredProducts.filter((product) => {
+        tempProducts = tempProducts.filter((product) => {
           return product.edition.find((p) => p === edition);
         });
       }
 
-      filteredProducts = filteredProducts.filter(
-        (product) => product.price <= price
-      );
+      tempProducts = tempProducts.filter((product) => product.price <= price);
 
       if (shipping) {
-        filteredProducts = filteredProducts.filter(
+        tempProducts = tempProducts.filter(
           (product) => product.shipping === shipping
         );
       }
       return {
         ...state,
-        filtered_products: filteredProducts,
+        filtered_products: tempProducts,
       };
+    }
 
     case CLEAR_FILTERS:
       return {

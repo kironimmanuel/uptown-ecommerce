@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import {
@@ -82,13 +82,14 @@ const SingleProductPage = () => {
               {stock > 0 ? "in stock" : "out of stock"}
             </p>
             <hr />
-            {stock > 0 && <AddToCart {...product} />}
+            {stock > 0 && <AddToCart product={product} />}
           </section>
         </div>
       </div>
     </Wrapper>
   );
 };
+export default SingleProductPage;
 
 const Wrapper = styled.main`
   .product-center {
@@ -123,5 +124,3 @@ const Wrapper = styled.main`
     }
   }
 `;
-
-export default SingleProductPage;

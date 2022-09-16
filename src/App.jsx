@@ -3,14 +3,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useProductsContext } from "./context/products_context";
-import { Footer, Navbar, Sidebar } from "./layouts/global";
+import { Footer, Navbar, Sidebar } from "./layouts";
 import {
   About,
+  AuthWrapper,
   Cart,
   Checkout,
   Contact,
   Error,
   Home,
+  PrivateRoute,
   Products,
   SingleProduct,
 } from "./pages/index";
@@ -26,7 +28,7 @@ function App() {
   }
 
   return (
-    <div>
+    <AuthWrapper>
       <BrowserRouter>
         <Navbar />
         <Sidebar />
@@ -37,7 +39,14 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/checkout"
+            element={
+              <PrivateRoute>
+                <Checkout />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
@@ -49,10 +58,9 @@ function App() {
           transition={Slide}
           hideProgressBar
           closeOnClick
-          // toastStyle={{ backgroundColor: "#06101e" }}
         />
       </BrowserRouter>
-    </div>
+    </AuthWrapper>
   );
 }
 

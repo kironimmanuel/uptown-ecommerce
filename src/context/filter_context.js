@@ -8,7 +8,7 @@ import {
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   UPDATE_SORT,
-} from "../actions/actions";
+} from "../reducers/actions/actions";
 import reducer from "../reducers/filter_reducer";
 import { useProductsContext } from "./products_context";
 
@@ -42,20 +42,20 @@ export const FilterProvider = ({ children }) => {
   // Order of call important, so it sorts by name-a(default sort) on page load
   useEffect(() => {
     // Filter first, since it changes the amount of displayed products
-    dispatch({ type: "FILTER_PRODUCTS" });
-    dispatch({ type: "SORT_PRODUCTS" });
+    dispatch({ type: FILTER_PRODUCTS });
+    dispatch({ type: SORT_PRODUCTS });
   }, [products, state.sort, state.filters]);
 
   const setGridView = () => {
-    dispatch({ type: "SET_GRIDVIEW" });
+    dispatch({ type: SET_GRIDVIEW });
   };
   const setListView = () => {
-    dispatch({ type: "SET_LISTVIEW" });
+    dispatch({ type: SET_LISTVIEW });
   };
 
   const updateSort = (e) => {
     // Just the value needed
-    dispatch({ type: "UPDATE_SORT", payload: e.target.value });
+    dispatch({ type: UPDATE_SORT, payload: e.target.value });
   };
 
   // Calls every time we change filters
@@ -78,10 +78,10 @@ export const FilterProvider = ({ children }) => {
     if (name === "shipping") {
       value = e.target.checked;
     }
-    dispatch({ type: "UPDATE_FILTERS", payload: { name, value } });
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
   const clearFilters = () => {
-    dispatch({ type: "CLEAR_FILTERS" });
+    dispatch({ type: CLEAR_FILTERS });
   };
 
   return (

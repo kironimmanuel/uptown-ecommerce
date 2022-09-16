@@ -7,7 +7,7 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   SIDEBAR_CLOSE,
   SIDEBAR_OPEN,
-} from "../actions/actions";
+} from "./actions/actions";
 
 const products_reducer = (state, action) => {
   switch (action.type) {

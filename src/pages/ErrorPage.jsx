@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import img from "../assets/images/not-found.svg";
@@ -14,6 +13,7 @@ const ErrorPage = () => {
     </Wrapper>
   );
 };
+export default ErrorPage;
 
 const Wrapper = styled.main`
   background: var(--clr-primary-10);
@@ -46,5 +46,3 @@ const Wrapper = styled.main`
     }
   }
 `;
-
-export default ErrorPage;

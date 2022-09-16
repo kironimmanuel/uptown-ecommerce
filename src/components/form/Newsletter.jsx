@@ -1,5 +1,5 @@
 import emailjs from "@emailjs/browser";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 
