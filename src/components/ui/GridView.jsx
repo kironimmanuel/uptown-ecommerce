@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Product from "./Product";
+import Product from "../product/Product";
 
 const GridView = ({ products }) => {
   return (
@@ -12,6 +12,7 @@ const GridView = ({ products }) => {
     </Wrapper>
   );
 };
+export default GridView;
 
 const Wrapper = styled.section`
   img {
@@ -42,5 +43,3 @@ const Wrapper = styled.section`
     }
   }
 `;
-
-export default GridView;

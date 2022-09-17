@@ -28,6 +28,7 @@ const ListView = ({ products }) => {
     </Wrapper>
   );
 };
+export default ListView;
 
 const Wrapper = styled.section`
   display: grid;
@@ -66,5 +67,3 @@ const Wrapper = styled.section`
     }
   }
 `;
-
-export default ListView;

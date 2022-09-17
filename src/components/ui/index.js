@@ -1,22 +1,9 @@
-import CartContent from "./CartContent";
 import Error from "./Error";
-import FeaturedProducts from "./FeaturedProducts";
+import GridView from "./GridView";
 import Hero from "./Hero";
+import ListView from "./ListView";
 import Loading from "./Loading";
 import PageHero from "./PageHero";
-import ProductImages from "./ProductImages";
-import ProductList from "./ProductList";
 import Services from "./Services";
 import Stars from "./Stars";
-export {
-  Hero,
-  Loading,
-  PageHero,
-  ProductImages,
-  ProductList,
-  Services,
-  Stars,
-  FeaturedProducts,
-  CartContent,
-  Error,
-};
+export { Hero, Loading, PageHero, Services, Stars, Error, GridView, ListView };

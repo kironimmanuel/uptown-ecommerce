@@ -1,4 +1,4 @@
-const Error = ({ home }) => {
+const Error = () => {
   return (
     <div
       className="section section-center text-center"
@@ -8,5 +8,4 @@ const Error = ({ home }) => {
     </div>
   );
 };
-
 export default Error;

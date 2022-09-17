@@ -27,6 +27,7 @@ const Services = () => {
     </Wrapper>
   );
 };
+export default Services;
 
 const Wrapper = styled.section`
   h3,
@@ -92,4 +93,3 @@ const Wrapper = styled.section`
     }
   }
 `;
-export default Services;

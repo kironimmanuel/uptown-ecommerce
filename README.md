@@ -1,20 +1,6 @@
 # Uptown Books Online Store
 
-#### Fullstack E-Commerce Store
-
-###### Built using MERN
-
-Nodemon
-
-```sh
-npm run dev
-```
-
-To solve the "Uncaught ReferenceError: process is not defined"
-
-The error is caused by the react-error-overlay package which has dependencies that were updated to support webpack v5 and are not compatible with react-scripts v4.
-
-`npm install --save-dev react-error-overlay@6.0.9`
+###### Serverless Netlify Functions
 
 **auth0**
 
@@ -57,3 +43,14 @@ Test database and social connections
 ```
 
 If you don't want to install cross-env globally, just add cross-env to your devDependencies and use "start": "npx cross-env Browser=..."
+
+**Serverless Function**
+`npm i netlify-cli -D`
+
+```sh
+  "devDependencies": {
+    "netlify-cli": "^3.39.4",
+  },
+```
+
+`ntl dev` to start server

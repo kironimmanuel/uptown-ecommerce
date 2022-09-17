@@ -12,6 +12,7 @@ const PageHero = ({ title, product }) => {
     </Wrapper>
   );
 };
+export default PageHero;
 
 const Wrapper = styled.section`
   background: var(--clr-primary-10);
@@ -30,5 +31,3 @@ const Wrapper = styled.section`
     color: var(--clr-primary-1);
   }
 `;
-
-export default PageHero;

@@ -7,7 +7,6 @@ const Loading = () => {
     </Wrapper>
   );
 };
-
 export default Loading;
 
 const Wrapper = styled.div`

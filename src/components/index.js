@@ -1,18 +1,8 @@
 import { AddToCart, CartButtons } from "./button";
+import { CartContent } from "./cart";
 import { Filters, Newsletter, Sort } from "./form";
-import StripeCheckout from "./StripeCheckout";
-import {
-  CartContent,
-  Error,
-  FeaturedProducts,
-  Hero,
-  Loading,
-  PageHero,
-  ProductImages,
-  ProductList,
-  Services,
-  Stars,
-} from "./ui";
+import { FeaturedProducts, ProductImages, ProductList } from "./product";
+import { Error, Hero, Loading, PageHero, Services, Stars } from "./ui";
 
 export {
   FeaturedProducts,
@@ -30,5 +20,4 @@ export {
   Stars,
   CartContent,
   PageHero,
-  StripeCheckout,
 };

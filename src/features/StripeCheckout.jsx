@@ -14,7 +14,7 @@ import { useUserContext } from "../context/user_context";
 import { formatPrice } from "../utils/formatPrice";
 
 const CheckoutForm = () => {
-  return <h4>hello from Stripe Checkout </h4>;
+  return <h4>hello from Stripe Checkout</h4>;
 };
 
 const StripeCheckout = () => {
@@ -24,6 +24,7 @@ const StripeCheckout = () => {
     </Wrapper>
   );
 };
+export default StripeCheckout;
 
 const Wrapper = styled.section`
   form {
@@ -77,7 +78,7 @@ const Wrapper = styled.section`
   #payment-request-button {
     margin-bottom: 32px;
   }
-  /* Buttons and links */
+
   button {
     background: #5469d4;
     font-family: Arial, sans-serif;
@@ -100,7 +101,7 @@ const Wrapper = styled.section`
     opacity: 0.5;
     cursor: default;
   }
-  /* spinner/processing state, errors */
+
   .spinner,
   .spinner:before,
   .spinner:after {
@@ -164,5 +165,3 @@ const Wrapper = styled.section`
     }
   }
 `;
-
-export default StripeCheckout;

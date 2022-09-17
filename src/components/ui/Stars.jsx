@@ -28,7 +28,6 @@ const Stars = ({ stars, reviews }) => {
     </Wrapper>
   );
 };
-
 export default Stars;
 
 const Wrapper = styled.div`
