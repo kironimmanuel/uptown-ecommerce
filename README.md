@@ -1,27 +1,31 @@
 # Uptown Books Online Store
 
-###### Serverless Netlify Functions
+Online shop for a fictional book store. The Application features a user login via auth0, getting data from my books API, several filter options for the store page, newsletter, contact form, shopping cart and a stripe payment implementation via netlify serverless functions.
 
-**auth0**
+### auth0 application setup
 
-Create new application `Single Page Application
+Create new application `Single Page Application`
 
 Copy `Domain` and `ClientID` and create `.env` variables
 
-Past `http://localhost:YourPort` into the following
-└──Application URIs
-        ├── Allowed Callback URLs
-        ├── Allowed Callback URLs
-        └── Allowed Callback URLs
+Past `http://localhost:YourPort` into the following<br />
+└──Application URIs<br />
+├──Allowed Callback URLs<br />
+├──Allowed Callback URLs<br />
+└──Allowed Callback URLs<br />
 
-Save changes
+`Save changes`
 
 Test database and social connections
 
-**cypress**
+To make the Google authentication work with auth0
+Check out [How To Add Google Authentication with Auth0](https://www.youtube.com/watch?v=70gp8kDBnfg&list=PL_P2h0WVUVXK7UEzxNaoAeRolN0nRkMyZ&index=4) on Youtube
+
+### cypress
+
 `npx cypress open`
 
-- in `package.json` add
+in `package.json` add
 
 ```sh
   "eslintConfig": {
@@ -32,19 +36,8 @@ Test database and social connections
   },
 ```
 
-**backup configs**
-"react-error-overlay": "^6.0.9",
+### Netlify serverless function
 
-**prevent CRA from opening new browser**
-`npm i cross-env` add `BROWSER=none` in .env
-
-```sh
-    "start": "cross-env BROWSER=none react-scripts start"
-```
-
-If you don't want to install cross-env globally, just add cross-env to your devDependencies and use "start": "npx cross-env Browser=..."
-
-**Serverless Function**
 `npm i netlify-cli -D`
 
 ```sh
@@ -54,3 +47,12 @@ If you don't want to install cross-env globally, just add cross-env to your devD
 ```
 
 `ntl dev` to start server
+
+### stripe payment implementation
+
+In .env add
+
+```sh
+REACT_APP_STRIPE_PUBLISHABLE_KEY=01234
+REACT_APP_STRIPE_SECRET_KEY=56789
+```

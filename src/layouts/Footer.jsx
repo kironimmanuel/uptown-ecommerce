@@ -7,7 +7,7 @@ const Footer = () => {
         reserved
       </h5>
       <p>
-        Pictures from{" "}
+        Images from{" "}
         <a href="https://www.canva.com/" target="_blank" rel="noreferrer">
           canva.com
         </a>

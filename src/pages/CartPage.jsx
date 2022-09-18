@@ -10,7 +10,7 @@ const CartPage = () => {
       <Wrapper className="page-100">
         <div className="empty">
           <h2>Your cart</h2>
-          <p>Your cart is currently empty. Let's change that!</p>
+          <p>is currently empty. Let's change that!</p>
           <Link to="/products" className="btn">
             shop now
           </Link>

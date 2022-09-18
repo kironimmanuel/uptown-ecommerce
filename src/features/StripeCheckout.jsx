@@ -6,24 +6,167 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { GiDirectionSign } from "react-icons/gi";
+import { useHistory, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
 import { formatPrice } from "../utils/formatPrice";
 
+const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+
 const CheckoutForm = () => {
-  return <h4>hello from Stripe Checkout</h4>;
+  const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
+  const { myUser } = useUserContext();
+  const navigate = useNavigate();
+
+  // Stripe 💸
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState(null);
+  const [processing, setProcessing] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState("");
+  const stripe = useStripe();
+  const elements = useElements();
+  const cardStyle = {
+    style: {
+      base: {
+        color: "#32325d",
+        fontFamily: "Arial, sans-serif",
+        fontSmoothing: "antialiased",
+        fontSize: "16px",
+        "::placeholder": {
+          color: "#32325d",
+        },
+      },
+      invalid: {
+        color: "#fa755a",
+        iconColor: "#fa755a",
+      },
+    },
+  };
+
+  const createPaymentIntent = async () => {
+    try {
+      // Server is the netlify serverless function
+      const { data } = await axios.post(
+        "/.netlify/functions/create-payment-intent",
+        JSON.stringify({ cart, shipping_fee, total_amount })
+      );
+      setClientSecret(data.clientSecret);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    createPaymentIntent();
+    // eslint-disable-next-line
+  }, []);
+
+  const handleChange = async (e) => {
+    setDisabled(e.empty);
+    setError(e.error ? e.error.message : "");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setProcessing(true);
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+      },
+    });
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      clearCart();
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
+    }
+  };
+
+  const copyToClipboard = (e) => {
+    navigator.clipboard.writeText(e.target.textContent);
+    toast.info("Copied to clipboard", {
+      toastId: "custom-id-yes",
+    });
+  };
+
+  return (
+    <div>
+      {succeeded ? (
+        <article>
+          <h4>Your payment was successful</h4>
+          <h4>
+            Redirecting back home <GiDirectionSign />
+          </h4>
+        </article>
+      ) : (
+        <article className="payment-card">
+          <h4>Hey, {myUser && myUser.nickname.split(".")[0]}</h4>
+          <p>Your total is {formatPrice(shipping_fee + total_amount)}</p>
+          <hr />
+          <p>
+            Test Succeed:{" "}
+            <span onClick={copyToClipboard}>4242 4242 4242 4242</span>
+          </p>
+          <p>
+            Test Require authentication:{" "}
+            <span onClick={copyToClipboard}>4000 0000 0000 3220</span>
+          </p>
+          <p>
+            Test Insufficient funds:{" "}
+            <span onClick={copyToClipboard}>4000 0000 0000 9995</span>
+          </p>
+        </article>
+      )}
+      {/* Stripe setup, ids must not be changed */}
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <CardElement
+          id="card-element"
+          options={cardStyle}
+          onChange={handleChange}
+        />
+        <button id="submit" disabled={processing || disabled || succeeded}>
+          <span id="button-text">
+            {processing ? <div className="spinner" id="spinner"></div> : "Pay"}{" "}
+          </span>
+        </button>
+        {/* Processing error */}
+        {error && (
+          <div className="card-error" role="alert">
+            {error}
+          </div>
+        )}
+        {/* Success message */}
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
+          Payment succeeded, check the result in your{" "}
+          <a href={`https://dashboard.stripe.com/test/payments`}>
+            Stripe Dashboard.
+          </a>{" "}
+          Refresh the page to repeat the payment process.
+        </p>
+      </form>
+    </div>
+  );
 };
 
 const StripeCheckout = () => {
   return (
     <Wrapper>
-      <CheckoutForm />
+      <Elements stripe={promise}>
+        <CheckoutForm />
+      </Elements>
     </Wrapper>
   );
 };
+
 export default StripeCheckout;
 
 const Wrapper = styled.section`
@@ -58,6 +201,22 @@ const Wrapper = styled.section`
   }
   .hidden {
     display: none;
+  }
+  .payment-card {
+    p {
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+    span {
+      cursor: pointer;
+      font-weight: 400;
+      letter-spacing: var(--spacing);
+      opacity: 0.7;
+      transition: all 0.3 ease;
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
   #card-error {
     color: rgb(105, 115, 134);

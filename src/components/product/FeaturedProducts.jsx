@@ -25,7 +25,6 @@ const FeaturedProducts = () => {
         <div className="underline"></div>
       </div>
       <div className="section-center featured">
-        {/* .slice() to limit the amount of featured books */}
         {featured.slice(0, 4).map((book) => {
           return <Product key={book.id} {...book} />;
         })}
