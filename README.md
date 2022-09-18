@@ -10,14 +10,10 @@ Copy `Domain` and `ClientID` and create `.env` variables
 
 Past `http://localhost:YourPort` into the following<br />
 
-<!-- <pre> -->
-
 └──Application URIs<br />
     ├──Allowed Callback URLs<br />
     ├──Allowed Callback URLs<br />
     └──Allowed Callback URLs<br />
-
-<!-- </pre> -->
 
 `Save changes`
 
