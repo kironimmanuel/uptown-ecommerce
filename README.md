@@ -9,10 +9,10 @@ Create new application `Single Page Application
 Copy `Domain` and `ClientID` and create `.env` variables
 
 Past `http://localhost:YourPort` into the following
-└──Application URIs
---Allowed Callback URLs
---Allowed Callback URLs
---Allowed Callback URLs
+└──Application URIs<br />
+--Allowed Callback URLs<br />
+--Allowed Callback URLs<br />
+--Allowed Callback URLs<br />
 
 Save changes
 
