@@ -10,9 +10,9 @@ Copy `Domain` and `ClientID` and create `.env` variables
 
 Past `http://localhost:YourPort` into the following
 └──Application URIs
-        ├── Allowed Callback URLs
-        ├── Allowed Callback URLs
-        └── Allowed Callback URLs
+ ├── Allowed Callback URLs
+ ├── Allowed Callback URLs
+ └── Allowed Callback URLs
 
 Save changes
 
