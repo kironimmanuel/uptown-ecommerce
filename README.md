@@ -12,8 +12,8 @@ Past `http://localhost:YourPort` into the following<br />
 
 └──Application URIs<br />
     ├──Allowed Callback URLs<br />
-    ├──Allowed Callback URLs<br />
-    └──Allowed Callback URLs<br />
+    ├──Allowed Logout URLs<br />
+    └──Allowed Web Origins<br />
 
 `Save changes`
 
