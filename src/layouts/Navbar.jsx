@@ -17,8 +17,8 @@ const Nav = () => {
         <div className="nav-header">
           <Link to="/">
             <img src={logo} alt="couch" />
+            <span>Uptown Books</span>
           </Link>
-          <span>Uptown Books</span>
           <button className="nav-toggle" onClick={openSidebar}>
             <FaBars />
           </button>
@@ -63,10 +63,16 @@ const Wrapper = styled.nav`
       width: 50px;
       margin-left: -15px;
     }
-    span {
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: 1.2rem;
       font-weight: 600;
-      padding-bottom: 0.4rem;
+      color: var(--clr-black);
+      span {
+        margin-left: 0.25rem;
+      }
     }
   }
   .nav-toggle {
