@@ -22,21 +22,6 @@ Test database and social connections
 To make the Google authentication work with auth0
 Check out [How To Add Google Authentication with Auth0](https://www.youtube.com/watch?v=70gp8kDBnfg&list=PL_P2h0WVUVXK7UEzxNaoAeRolN0nRkMyZ&index=4) on Youtube
 
-### cypress
-
-`npx cypress open`
-
-in `package.json` add
-
-```sh
-  "eslintConfig": {
-    "extends": [
-        # Omits eslint from marking cy. as not defined
-      "plugin:cypress/recommended"
-    ]
-  },
-```
-
 ### Netlify serverless function
 
 `npm i netlify-cli -D`
