@@ -44,5 +44,6 @@ export const services = [
   },
 ];
 
-export const products_url = "https://kb-books-api.herokuapp.com/api/v1/books";
-export const single_product_url = `https://kb-books-api.herokuapp.com/api/v1/books/`;
+export const products_url =
+  "https://rest-apis-production.up.railway.app/api/v1/books";
+export const single_product_url = `https://rest-apis-production.up.railway.app/api/v1/books`;
